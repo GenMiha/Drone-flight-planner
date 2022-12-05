@@ -62,7 +62,7 @@ class Nozzles(models.Model):
 class Engine(models.Model):
     name = models.CharField(verbose_name='Remote control')
     max_pull = models.FloatField(verbose_name='Max Pull per Axis', validators=[MinValueValidator(0)])
-    recomended_weight = models.FloatField(verbose_name='Recomended weight per Axis', validators=[MinValueValidator(0)])
+    recommended_weight = models.FloatField(verbose_name='Recommended weight per Axis', validators=[MinValueValidator(0)])
     price = models.IntegerField(verbose_name='Price')
     status = models.CharField(verbose_name='Status')
 
