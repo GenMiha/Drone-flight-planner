@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block titlename %}
+Request History
+{% endblock %}
+
+
+{% block content %}
+<table class="centered striped">
+    <thead>
+        <tr>
+            <th>Request type</th>
+            <th>Request description</th>
+            <th>Request status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in object_list %}
+            <tr>
+                <td>{{ request.request_type }}</td>
+                <td>{{ request.request_goal }}</td>
+                <td>{{ request.status }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
