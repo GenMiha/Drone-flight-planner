@@ -81,6 +81,7 @@ class Pump(models.Model):
 
 class UAV(models.Model):
     name = models.TextField(verbose_name='Unmanned aerial vehicle')
+    serial_id = models.TextField(verbose_name='Serial Id', default='0')
     description = models.TextField(verbose_name='Description', max_length=255)
     deployed_length = models.IntegerField(verbose_name='Deployed length', validators=[MinValueValidator(0)])
     deployed_width = models.IntegerField(verbose_name='Deployed width', validators=[MinValueValidator(0)])
@@ -118,14 +119,16 @@ class Parts(models.Model):
 
 class Contract(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    article = models.TextField(verbose_name='Article', default='№')
     contract_date = models.DateField(verbose_name='Contract date')
     document = models.URLField(verbose_name='Document')
 
 
 class Request(models.Model):
-    request_type = models.TextField(verbose_name='Request type', default='Tech Service')
+    request_type = models.TextField(verbose_name='Request type', default='None')
     request_goal = models.TextField(verbose_name='Request Goal', max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    uav = models.ForeignKey(UAV, on_delete=models.CASCADE)
     status = models.TextField(verbose_name='Status', max_length=15)
 
 
