@@ -80,7 +80,7 @@ class UserLogoutView(LogoutView):
 
 
 class RequestCreateView(LoginRequiredMixin, FormView):
-    template_name = ''
+    template_name = 'request.html'
 
     def form_valid(self, form):
         request = Request

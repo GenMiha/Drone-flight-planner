@@ -13,16 +13,16 @@
     <nav>
         <div class="nav-wrapper rown">
             <div class="col s10 offset-s1">
-                <a href="{% url 'home' %}" class="brand-logo">SHOP</a>
+                <a href="{% url 'home' %}" class="brand-logo">UAV For Everyone</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
                     <li><a href="#">{{ user.email }}</a> </li>
                     <li><a href="#">My Park</a> </li>
                     <li><a href="#">Request history</a> </li>
-                    <li><a href="#">log out</a> </li>
+                    <li><a href="{% url 'logout' %}">log out</a> </li>
                 {% else %}
-                    <li><a href="#">login</a> </li>
-                    <li><a href="#">sign up</a> </li>
+                    <li><a href="{% url 'login' %}">login</a> </li>
+                    <li><a href="{% url 'signup' %}}">sign up</a> </li>
                 {% endif %}
                 </ul>
             </div>
