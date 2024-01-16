@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block titlename %}
+Request
+{% endblock %}
 
 {% block content %}
+
 <h2>Request</h2>
-<form method="post">
-    <div>
-        <label><input type="radio" name="Tech Service"/> Tech Service </label>
-        <label><input type="radio" name="Repairing"/> Repairing </label>
-        <label><input type="radio" name="Part Replace"/> Part Replace </label>
-    </div>
-    <textarea>Enter Your request
-    </textarea>
+<form method="POST">
+    {% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+            </p>
+        {% endfor %}
+<!--    <select name="request_type" id="request_type_id">-->
+<!--        <option value="none">-&#45;&#45;&#45;&#45;None-&#45;&#45;&#45;&#45;</option>-->
+<!--        <option value="repairing">Repairing</option>-->
+<!--        <option value="part replace">Part Replace</option>-->
+<!--        <option value="tech service">Tech Service</option>-->
+<!--    </select>-->
 
+<!--    <textarea>Enter Your request</textarea>-->
 
-    <button type="submit">Request</button>
+    <button class="btn waves-effect waves-light" type="submit">Request</button>
 </form>
 {% endblock %}

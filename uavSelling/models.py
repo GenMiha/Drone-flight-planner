@@ -132,6 +132,10 @@ class Request(models.Model):
     status = models.TextField(verbose_name='Status', max_length=15)
 
 
+class SimpleRequest(models.Model):
+    request_goal = models.TextField(verbose_name='Request Goal', max_length=255)
+
+
 class TechService(models.Model):
     request = models.ForeignKey(Request, on_delete=models.CASCADE)
     contract = models.ForeignKey(Contract, on_delete=models.CASCADE)
@@ -151,6 +155,13 @@ class PartReplace(models.Model):
 class ElectronicCard(models.Model):
     uav = models.ForeignKey(UAV, on_delete=models.CASCADE)
     document = models.URLField(verbose_name='Document')
+
+
+class Notification(models.Model):
+    uav = models.ForeignKey(UAV, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    datetime = models.DateTimeField(verbose_name='DateTime Notice')
+    notice = models.TextField(verbose_name='Notice', max_length=250)
 
 
 

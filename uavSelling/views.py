@@ -7,9 +7,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Avg
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView, UpdateView, DetailView, DeleteView, ListView
+from django.views.generic import TemplateView, FormView, UpdateView, DetailView, DeleteView, ListView, CreateView
 
-from uavSelling.forms import SignUpForm
+from uavSelling.forms import *
 from uavSelling.models import *
 
 
@@ -74,23 +74,50 @@ class SingUpView(FormView):
 class UserLoginView(LoginView):
     template_name = 'login.html'
 
+    def form_valid(self, form):
+        print("something")
+        return super().form_valid(form)
+
 
 class UserLogoutView(LogoutView):
     pass
 
 
-class RequestCreateView(LoginRequiredMixin, FormView):
+class RequestCreateView(LoginRequiredMixin, CreateView):
     template_name = 'request.html'
+    form_class = RequestCreateForm
+    success_url = reverse_lazy('request_history')
 
-    def form_valid(self, form):
-        request = Request
-        pass
-
-
+    # def form_valid(self, form):
+    #     print('anybody')
+    #     form.save()
+    #     return super().form_valid(form)
+        # form.save()
+        # data = form.cleaned_data
+        # Request.objects.create(user=self.request.user, **data)
+        # logger.info('[+] Request created...')
+        # print(f"\n\n{Request}\n\n\n")
+        # print('1233123')
+        # return redirect(self.success_url)
 
 
 class RequestHistoryView(LoginRequiredMixin, ListView):
     template_name = 'requestHistory.html'
 
     def get_queryset(self):
-        return Request.objects
+        return Request.objects.filter(user=self.request.user)
+
+
+class ParkView(LoginRequiredMixin, ListView):
+    template_name = 'myPark.html'
+
+    def get_queryset(self):
+        return Request.objects.filter(user=self.request.user)
+
+
+class UserView(LoginRequiredMixin, ListView):
+    template_name = 'user.html'
+
+
+class UserEditView(LoginRequiredMixin, FormView):
+    pass
