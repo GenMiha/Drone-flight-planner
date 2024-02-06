@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from uavSelling.models import User, Request, TechService, Repairing, PartReplace, SimpleRequest
+from uavSelling.models import *
 
 
 class SignUpForm(UserCreationForm):
