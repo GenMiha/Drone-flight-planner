@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('uavSelling', '0013_remove_completedtechcard_comp_tech_oper_id_and_more'),
+        ('droneSelling', '0013_remove_completedtechcard_comp_tech_oper_id_and_more'),
     ]
 
     operations = [

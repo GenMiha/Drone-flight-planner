@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
-#AUTH_USER_MODEL = 'uavSelling.User'
+#AUTH_USER_MODEL = 'droneSelling.User'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'uavSelling',
+    'droneSelling',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'uavSelling', 'static'),
+    os.path.join(BASE_DIR, 'droneSelling', 'static'),
 ]
 STATIC_URL = '/static/'
 

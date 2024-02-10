@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('uavSelling', '0002_contract'),
+        ('droneSelling', '0002_contract'),
     ]
 
     operations = [
@@ -26,25 +26,25 @@ class Migration(migrations.Migration):
             name='TechService',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('contract', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.contract')),
-                ('request', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.request')),
+                ('contract', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.contract')),
+                ('request', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.request')),
             ],
         ),
         migrations.CreateModel(
             name='Repairing',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('contract', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.contract')),
-                ('parts', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.parts')),
-                ('request', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.request')),
+                ('contract', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.contract')),
+                ('parts', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.parts')),
+                ('request', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.request')),
             ],
         ),
         migrations.CreateModel(
             name='PartReplace',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('parts', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.parts')),
-                ('request', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.request')),
+                ('parts', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.parts')),
+                ('request', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.request')),
             ],
         ),
     ]

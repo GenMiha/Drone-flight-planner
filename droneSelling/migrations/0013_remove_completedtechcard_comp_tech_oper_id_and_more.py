@@ -8,7 +8,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('uavSelling', '0012_drone_drone_type_id_flight_drone_id_and_more'),
+        ('droneSelling', '0012_drone_drone_type_id_flight_drone_id_and_more'),
     ]
 
     operations = [
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveField(
             model_name='dronetype',
-            name='techcard_id',
+            name='tech_card_id',
         ),
         migrations.RemoveField(
             model_name='techcard',
@@ -30,14 +30,14 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='completedtechoperation',
-            name='comp_techcard_id',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.completedtechcard'),
+            name='comp_tech_card_id',
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.completedtechcard'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='service',
             name='drone_type_id',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.dronetype'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.dronetype'),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -49,7 +49,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='techcard',
             name='dronetype_id',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.dronetype'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.dronetype'),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -66,8 +66,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='techoperation',
-            name='techcard_id',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.techcard'),
+            name='tech_card_id',
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.techcard'),
             preserve_default=False,
         ),
         migrations.AlterField(

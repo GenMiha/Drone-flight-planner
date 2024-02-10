@@ -1,6 +1,6 @@
 from django.urls import path
 
-from uavSelling import views
+from droneSelling import views
 
 urlpatterns = [
     path('', views.TestView.as_view(), name='home'),

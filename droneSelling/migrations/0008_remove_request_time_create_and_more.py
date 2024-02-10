@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('uavSelling', '0007_request_time_create_request_time_update'),
+        ('droneSelling', '0007_request_time_create_request_time_update'),
     ]
 
     operations = [

@@ -31,20 +31,21 @@ class Drone(models.Model):
 
 class TechCard(models.Model):
     description = models.CharField('description', max_length=20)
-    dronetype_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
+    drone_type_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
 
 
 class TechOperation(models.Model):
     description = models.CharField('description', max_length=20)
     html_content = models.URLField('html-content')
     instruction_order = models.IntegerField('instruction order')
-    techcard_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
+    tech_card_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
 
 
 class Request(models.Model):
     description = models.TextField('description', default=None)
     attachments = models.URLField('attachments', default='#')
     request_date = models.DateTimeField('request date', auto_now_add=True)
+    response = models.TextField('response', default=None)
     response_date = models.DateTimeField('response date')
     repair_date = models.DateTimeField('repair date')
     status = models.TextField('status')
@@ -53,14 +54,10 @@ class Request(models.Model):
     drone_id = models.ForeignKey(Drone, on_delete=models.CASCADE)
 
 
-class SimpleRequest(models.Model):
-    request_goal = models.TextField(verbose_name='Request Goal', max_length=255)
-
-
 class CompletedTechCard(models.Model):
     perform_date = models.DateTimeField('perform date')
     drone_id = models.ForeignKey(Drone, on_delete=models.CASCADE)
-    techcard_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
+    tech_card_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
 
 
 class CompletedTechOperation(models.Model):
@@ -68,14 +65,14 @@ class CompletedTechOperation(models.Model):
     done_confirm_date = models.DateTimeField('done confirm date')
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     tech_oper_id = models.ForeignKey(TechOperation, on_delete=models.CASCADE)
-    comp_techcard_id = models.ForeignKey(CompletedTechCard, on_delete=models.CASCADE)
+    comp_tech_card_id = models.ForeignKey(CompletedTechCard, on_delete=models.CASCADE)
 
 
 class Service(models.Model):
     type = models.CharField('type', max_length=20)
     criteria = models.JSONField('criteria')
-    drone_type_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
-    techcard_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
+    drone_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
+    tech_card_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
 
 
 class Flight(models.Model):

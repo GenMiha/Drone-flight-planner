@@ -9,8 +9,8 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView, UpdateView, DetailView, DeleteView, ListView, CreateView
 
-from uavSelling.forms import *
-from uavSelling.models import *
+from droneSelling.forms import *
+from droneSelling.models import *
 
 
 logger = logging.getLogger(__name__)
@@ -21,37 +21,37 @@ class TestView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         logger.debug('[+] Home page context is rendering...')
-        uavs = UAV.objects.all()
+        drones = Drone.objects.all()
 
-        uavs_list = []
-        for uav in uavs:
-            uavs_list.append(
+        drones_list = []
+        for drone in drones:
+            drones_list.append(
                 {
-                    'name': uav.name,
-                    'description': uav.description,
-                    'deployed length': uav.deployed_length,
-                    'deployed width': uav.deployed_width,
-                    'deployed height': uav.deployed_height,
-                    'rolled up length': uav.rolled_up_length,
-                    'rolled up width': uav.rolled_up_width,
-                    'rolled up height': uav.rolled_up_height,
-                    'weight': uav.weight,
-                    'max weight': uav.max_weight,
-                    'speed': uav.speed,
-                    'max speed': uav.max_speed,
-                    'flight time with full tank': uav.flight_time_full,
-                    'flight time with empty tank': uav.flight_time_empty,
-                    'area per flight': uav.area_per_flight,
-                    'area per hour': uav.area_per_hour,
-                    'tank': uav.tank,
-                    'drop size': uav.drop_size,
-                    'price': uav.price,
-                    'status': uav.status
+                    'name': drone.name,
+                    'description': drone.description,
+                    'deployed length': drone.deployed_length,
+                    'deployed width': drone.deployed_width,
+                    'deployed height': drone.deployed_height,
+                    'rolled up length': drone.rolled_up_length,
+                    'rolled up width': drone.rolled_up_width,
+                    'rolled up height': drone.rolled_up_height,
+                    'weight': drone.weight,
+                    'max weight': drone.max_weight,
+                    'speed': drone.speed,
+                    'max speed': drone.max_speed,
+                    'flight time with full tank': drone.flight_time_full,
+                    'flight time with empty tank': drone.flight_time_empty,
+                    'area per flight': drone.area_per_flight,
+                    'area per hour': drone.area_per_hour,
+                    'tank': drone.tank,
+                    'drop size': drone.drop_size,
+                    'price': drone.price,
+                    'status': drone.status
 
                 }
             )
 
-        context = {'UAVs': uavs_list}
+        context = {'Drones': drones_list}
         logger.info('[+] Home page context rendered successfully.')
         return context
 

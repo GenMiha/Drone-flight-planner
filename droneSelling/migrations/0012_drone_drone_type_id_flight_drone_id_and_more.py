@@ -8,20 +8,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('uavSelling', '0011_completedtechcard_completedtechoperation_drone_and_more'),
+        ('droneSelling', '0011_completedtechcard_completedtechoperation_drone_and_more'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='drone',
             name='drone_type_id',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.dronetype'),
+            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.dronetype'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='flight',
             name='drone_id',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.drone'),
+            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.drone'),
             preserve_default=False,
         ),
         migrations.AlterField(

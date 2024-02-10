@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('uavSelling', '0003_request_techservice_repairing_partreplace'),
+        ('droneSelling', '0003_request_techservice_repairing_partreplace'),
     ]
 
     operations = [
@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('document', models.URLField(verbose_name='Document')),
-                ('uav', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.uav')),
+                ('uav', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.uav')),
             ],
         ),
     ]

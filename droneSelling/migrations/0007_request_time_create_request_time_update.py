@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('uavSelling', '0006_contract_article_request_uav_uav_serial_id_and_more'),
+        ('droneSelling', '0006_contract_article_request_uav_uav_serial_id_and_more'),
     ]
 
     operations = [

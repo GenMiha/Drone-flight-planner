@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('uavSelling', '0010_simplerequest'),
+        ('droneSelling', '0010_simplerequest'),
     ]
 
     operations = [
@@ -272,22 +272,22 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='techcard',
             name='tech_op_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.techoperation'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.techoperation'),
         ),
         migrations.AddField(
             model_name='service',
-            name='techcard_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.techcard'),
+            name='tech_card_id',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.techcard'),
         ),
         migrations.AddField(
             model_name='dronetype',
-            name='techcard_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.techcard'),
+            name='tech_card_id',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.techcard'),
         ),
         migrations.AddField(
             model_name='completedtechoperation',
             name='tech_oper_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.techoperation'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.techoperation'),
         ),
         migrations.AddField(
             model_name='completedtechoperation',
@@ -297,22 +297,22 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='completedtechcard',
             name='comp_tech_oper_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.completedtechoperation'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.completedtechoperation'),
         ),
         migrations.AddField(
             model_name='completedtechcard',
             name='drone_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.drone'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.drone'),
         ),
         migrations.AddField(
             model_name='completedtechcard',
-            name='techcard_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='uavSelling.techcard'),
+            name='tech_card_id',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='droneSelling.techcard'),
         ),
         migrations.AddField(
             model_name='request',
             name='drone_id',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.drone'),
+            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.drone'),
             preserve_default=False,
         ),
     ]

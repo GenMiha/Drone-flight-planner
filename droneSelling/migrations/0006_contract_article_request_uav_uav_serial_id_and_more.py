@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('uavSelling', '0005_request_request_type'),
+        ('droneSelling', '0005_request_request_type'),
     ]
 
     operations = [
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='request',
             name='uav',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='uavSelling.uav'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='droneSelling.uav'),
             preserve_default=False,
         ),
         migrations.AddField(
