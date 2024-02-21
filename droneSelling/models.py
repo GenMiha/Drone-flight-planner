@@ -13,20 +13,21 @@ class Contract(models.Model):
 
 
 class DroneType(models.Model):
-    model = models.CharField('model', max_length=12)
+    type = models.CharField('model', max_length=12)
     description = models.TextField('description')
     rolled_up_state = models.CharField('rolled up state', max_length=30)
     deployed_state = models.CharField('deployed state', max_length=30)
 
 
 class Drone(models.Model):
-    name = models.CharField('drone', max_length=20)
+    model = models.CharField('drone', max_length=20)
     serial_number = models.CharField('serial number', default='0', max_length=15)
     description = models.TextField('description')
     manufacture_date = models.DateField('manufacture date')
     registration_date = models.DateField('registration date')
     status = models.TextField('status')
     drone_type_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class TechCard(models.Model):
@@ -68,10 +69,10 @@ class CompletedTechOperation(models.Model):
     comp_tech_card_id = models.ForeignKey(CompletedTechCard, on_delete=models.CASCADE)
 
 
-class Service(models.Model):
+class ServiceRules(models.Model):
     type = models.CharField('type', max_length=20)
     criteria = models.JSONField('criteria')
-    drone_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
+    drone_type_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
     tech_card_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
 
 

@@ -16,21 +16,11 @@ class SignUpForm(UserCreationForm):
         )
 
 
-class ResetPasswordForm(ModelForm):
-    class Meta:
-        model = User
-        fields = (
-            'email',
-            'password1',
-            'password2'
-        )
-
-
 class DroneTypeForm(ModelForm):
     class Meta:
         model = DroneType
         fields = (
-            'model',
+            'type',
             'description',
             'rolled_up_state',
             'deployed_state'
@@ -42,7 +32,6 @@ class RequestCreateForm(ModelForm):
         model = Request
         fields = (
             'description',
-            'attachments',
         )
 
 
@@ -68,12 +57,14 @@ class DroneForm(ModelForm):
     class Meta:
         model = Drone
         fields = (
-            'name',
+            'model',
             'serial_number',
             'description',
             'manufacture_date',
+            'registration_date',
             'status',
-            'drone_type_id'
+            'drone_type_id',
+            'user_id'
         )
 
 
@@ -128,10 +119,10 @@ class CompletedTechOperationForm(ModelForm):
         )
 
 
-class ServiceForm(ModelForm):
-    class Meta:
-        model = Service
-        fields = (
-            'type',
-            'criteria'
-        )
+# class ServiceForm(ModelForm):
+#     class Meta:
+#         model = Service
+#         fields = (
+#             'type',
+#             'criteria'
+#         )

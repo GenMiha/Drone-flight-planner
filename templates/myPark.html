@@ -6,5 +6,13 @@ My Park
 
 {% block content %}
 Here is your park:
-
+{% csrf_token %}
+{% for drone in object_list %}
+    <ul>
+        {{ drone.model }}<br>
+    </ul>
+{% endfor %}
+<footer>
+    <a href="{% url 'add_drone' %}">Add drone</a>
+</footer>
 {% endblock %}

@@ -12,4 +12,5 @@ urlpatterns = [
     path('My park', views.ParkView.as_view(), name='park'),
     path('profile', views.UserView.as_view(), name='user'),
     path('profile/edit', views.UserEditView.as_view(), name='user_edit'),
+    path('drone-register', views.DroneAddView.as_view(), name='add_drone'),
 ]
