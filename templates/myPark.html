@@ -9,7 +9,7 @@ Here is your park:
 {% csrf_token %}
 {% for drone in object_list %}
     <ul>
-        {{ drone.model }}<br>
+        <a href ="{% url 'drone_detail' drone.id %}">{{ drone.model }}<br></a>
     </ul>
 {% endfor %}
 <footer>

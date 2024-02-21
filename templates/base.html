@@ -18,7 +18,7 @@
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'user' %}">{{ user.username }}</a> </li>
                     <li><a href="{% url 'park' %}">My Park</a> </li>
-                    <li><a href="{% url 'request_history' %}">Request history</a> </li>
+                    <li><a href="{% url 'request_history' %}">Request history</a></li>
                     <li><a href="{% url 'logout' %}">log out</a> </li>
                 {% else %}
                     <li><a href="{% url 'login' %}">login</a> </li>

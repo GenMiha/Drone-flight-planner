@@ -27,25 +27,8 @@ class TestView(LoginRequiredMixin, TemplateView):
         for drone in drones:
             drones_list.append(
                 {
-                    'name': drone.name,
+                    'model': drone.model,
                     'description': drone.description,
-                    'deployed length': drone.deployed_length,
-                    'deployed width': drone.deployed_width,
-                    'deployed height': drone.deployed_height,
-                    'rolled up length': drone.rolled_up_length,
-                    'rolled up width': drone.rolled_up_width,
-                    'rolled up height': drone.rolled_up_height,
-                    'weight': drone.weight,
-                    'max weight': drone.max_weight,
-                    'speed': drone.speed,
-                    'max speed': drone.max_speed,
-                    'flight time with full tank': drone.flight_time_full,
-                    'flight time with empty tank': drone.flight_time_empty,
-                    'area per flight': drone.area_per_flight,
-                    'area per hour': drone.area_per_hour,
-                    'tank': drone.tank,
-                    'drop size': drone.drop_size,
-                    'price': drone.price,
                     'status': drone.status
 
                 }
@@ -88,23 +71,15 @@ class RequestCreateView(LoginRequiredMixin, CreateView):
     form_class = RequestCreateForm
     success_url = reverse_lazy('request_history')
 
-    # def form_valid(self, form):
-    #     print('anybody')
-    #     form.save()
-    #     return super().form_valid(form)
-        # form.save()
-        # data = form.cleaned_data
-        # Request.objects.create(user=self.request.user, **data)
-        # logger.info('[+] Request created...')
-        # print(f"\n\n{Request}\n\n\n")
-        # print('1233123')
-        # return redirect(self.success_url)
+    # def get_context_data(self, **kwargs):
+    #     user_id = self.request.user_id
+    #     drone_id = self.request.drone_id
+
 
 
 class ResponseCreateView(LoginRequiredMixin, UpdateView):
     template_name = 'response.html'
     form_class = RequestResponseForm
-
     pass
 
 
@@ -112,24 +87,15 @@ class RequestHistoryView(LoginRequiredMixin, ListView):
     template_name = 'requestHistory.html'
     model = Request
 
-    # def get_queryset(self):
-    #     return Request.objects.filter(user=self.request.user)
-
 
 class ParkView(LoginRequiredMixin, ListView):
     template_name = 'myPark.html'
     model = Drone
 
-    # def get_queryset(self):
-    #     return super().get_queryset().filter(user=self.request.user)
 
-
-class UserView(LoginRequiredMixin, ListView): #detailview
+class UserView(LoginRequiredMixin, ListView):
     template_name = 'user.html'
     model = User
-
-    # def get_queryset(self):
-    #     return Request.objects.filter(user=self.request.user)
 
 
 class UserEditView(LoginRequiredMixin, FormView):
@@ -145,7 +111,8 @@ class DroneAddView(LoginRequiredMixin, CreateView):
     form_class = DroneForm
     success_url = reverse_lazy('park')
 
-    #def form_valid(self, form):
-    #    print("sdffssd")
-    #    super().form_valid(form)
-    #   register
+
+class DroneDetailView(LoginRequiredMixin, DetailView):
+    model = Drone
+    template_name = 'drone.html'
+    context_object_name = 'drone'

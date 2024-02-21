@@ -32,6 +32,8 @@ class RequestCreateForm(ModelForm):
         model = Request
         fields = (
             'description',
+            'user_id',
+            'drone_id'
         )
 
 
@@ -117,6 +119,8 @@ class CompletedTechOperationForm(ModelForm):
             'perform_date',
             'done_confirm_date'
         )
+
+
 
 
 # class ServiceForm(ModelForm):

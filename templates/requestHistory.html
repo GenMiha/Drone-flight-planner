@@ -9,7 +9,8 @@ Request History
 <table class="centered striped">
     <thead>
         <tr>
-            <th>Request type</th>
+            <th>Drone</th>
+            <th>Drone Type</th>
             <th>Request description</th>
             <th>Request status</th>
         </tr>
@@ -17,14 +18,12 @@ Request History
     <tbody>
         {% for request in object_list %}
             <tr>
-                <td>{{ request.request_type }}</td>
-                <td>{{ request.request_goal }}</td>
+                <td>{{ request.drone_id.model }}</td>
+                <td>{{ request.drone_id.drone_type_id }}</td>
+                <td>{{ request.description }}</td>
                 <td>{{ request.status }}</td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
-<footer>
-    <a href="{% url 'create_request' %}">Create request</a>
-</footer>
 {% endblock %}

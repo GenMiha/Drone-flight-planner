@@ -18,6 +18,9 @@ class DroneType(models.Model):
     rolled_up_state = models.CharField('rolled up state', max_length=30)
     deployed_state = models.CharField('deployed state', max_length=30)
 
+    def __str__(self):
+        return self.type
+
 
 class Drone(models.Model):
     model = models.CharField('drone', max_length=20)
@@ -28,6 +31,9 @@ class Drone(models.Model):
     status = models.TextField('status')
     drone_type_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.model
 
 
 class TechCard(models.Model):
@@ -46,11 +52,11 @@ class Request(models.Model):
     description = models.TextField('description', default=None)
     attachments = models.URLField('attachments', default='#')
     request_date = models.DateTimeField('request date', auto_now_add=True)
-    response = models.TextField('response', default=None)
-    response_date = models.DateTimeField('response date')
-    repair_date = models.DateTimeField('repair date')
-    status = models.TextField('status')
-    summary = models.TextField('summary')
+    response = models.TextField('response', default=None, null=True)
+    response_date = models.DateTimeField('response date', null=True)
+    repair_date = models.DateTimeField('repair date', null=True)
+    status = models.TextField('status', null=True)
+    summary = models.TextField('summary', null=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     drone_id = models.ForeignKey(Drone, on_delete=models.CASCADE)
 

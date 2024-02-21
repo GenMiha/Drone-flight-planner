@@ -6,5 +6,15 @@ Drone
 {% endblock %}
 
 {% block content %}
-
+{% csrf_token %}
+{% if user.is_authenticated %}
+    {{ drone.model }}<br>
+    {{ drone.serial_number }}<br>
+    {{ drone.description }}<br>
+    {{ drone.manufacture_date }}<br>
+    {{ drone.registration_date }}<br>
+    {{ drone.status }}<br>
+    {{ drone.drone_type_id.type }}<br>
+    <a href="{% url 'create_request' %}">Ask for service</a>
+{% endif %}
 {% endblock %}
