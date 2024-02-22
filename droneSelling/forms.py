@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import ModelForm
+from django.forms import ModelForm, HiddenInput, DateInput
 from droneSelling.models import *
 
 
@@ -13,6 +13,16 @@ class SignUpForm(UserCreationForm):
             'email',
             'password1',
             'password2'
+        )
+
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'email',
         )
 
 
@@ -35,6 +45,10 @@ class RequestCreateForm(ModelForm):
             'user_id',
             'drone_id'
         )
+        widgets = {
+            'user_id': HiddenInput(),
+            'drone_id': HiddenInput(),
+        }
 
 
 class RequestResponseForm(ModelForm):
@@ -63,11 +77,14 @@ class DroneForm(ModelForm):
             'serial_number',
             'description',
             'manufacture_date',
-            'registration_date',
             'status',
             'drone_type_id',
             'user_id'
         )
+        widgets = {
+            'manufacture_date': DateInput(format="%d-%m-%Y", attrs={"type": "date"}),
+            'user_id': HiddenInput(),
+        }
 
 
 class TechCardForm(ModelForm):
@@ -119,7 +136,6 @@ class CompletedTechOperationForm(ModelForm):
             'perform_date',
             'done_confirm_date'
         )
-
 
 
 

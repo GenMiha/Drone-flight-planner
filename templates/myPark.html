@@ -7,12 +7,14 @@ My Park
 {% block content %}
 Here is your park:
 {% csrf_token %}
-{% for drone in object_list %}
+{% if user.is_authenticated %}
+    {% for drone in object_list %}
     <ul>
         <a href ="{% url 'drone_detail' drone.id %}">{{ drone.model }}<br></a>
     </ul>
-{% endfor %}
+    {% endfor %}
+{% endif %}
 <footer>
-    <a href="{% url 'add_drone' %}">Add drone</a>
+    <a class="waves-effect waves-light btn" href="{% url 'add_drone' %}">Add drone</a>
 </footer>
 {% endblock %}

@@ -12,7 +12,9 @@ Request
     {% csrf_token %}
         {% for field in form %}
             <p>
-                {{ field.label_tag }}<br>
+                {% if not field.is_hidden %}
+                    {{ field.label_tag }}<br>
+                {% endif %}
                 {{ field }}
             </p>
         {% endfor %}

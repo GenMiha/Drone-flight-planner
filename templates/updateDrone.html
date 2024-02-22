@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block titlename %}
-Drone registration
+Drone info update
 {% endblock %}
 
 {% block content %}
-<h2>Drone registration</h2>
+<h2>Drone info update</h2>
 <form method="post">
     {% csrf_token %}
         {% for field in form %}
@@ -17,7 +17,7 @@ Drone registration
                 {{ field }}
             </p>
         {% endfor %}
-    <button class="btn waves-effect waves-light" type="submit">Add drone</button>
+    <button class="btn waves-effect waves-light" type="submit">Update</button>
 </form>
 
 {% endblock %}

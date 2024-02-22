@@ -8,13 +8,14 @@ Drone
 {% block content %}
 {% csrf_token %}
 {% if user.is_authenticated %}
-    {{ drone.model }}<br>
-    {{ drone.serial_number }}<br>
-    {{ drone.description }}<br>
-    {{ drone.manufacture_date }}<br>
-    {{ drone.registration_date }}<br>
-    {{ drone.status }}<br>
-    {{ drone.drone_type_id.type }}<br>
-    <a href="{% url 'create_request' %}">Ask for service</a>
+    Model: {{ drone.model }}<br>
+    Serial number: {{ drone.serial_number }}<br>
+    Description: {{ drone.description }}<br>
+    Manufacture date: {{ drone.manufacture_date }}<br>
+    Registration date: {{ drone.registration_date }}<br>
+    Status: {{ drone.status }}<br>
+    Drone type: {{ drone.drone_type_id.type }}<br>
+    <a class="waves-effect waves-light btn" href="{% url 'drone_update' drone.id %}">Update info</a>
+    <a class="waves-effect waves-light btn" href="{% url 'create_request' drone.id %}">Ask for service</a>
 {% endif %}
 {% endblock %}

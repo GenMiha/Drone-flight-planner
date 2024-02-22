@@ -5,5 +5,16 @@ Edit user info
 {% endblock %}
 
 {% block content %}
-Edit window
+<form method="post">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+            </p>
+        {% endfor %}
+        <button class="btn waves-effect waves-light" type="submit">Save</button>
+    {% endif %}
+</form>
 {% endblock %}

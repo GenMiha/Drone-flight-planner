@@ -22,13 +22,20 @@ class DroneType(models.Model):
         return self.type
 
 
+class DroneStatusType(models.TextChoices):
+    NEW = 'NEW'
+    IN_USE = 'IN USE'
+    ON_SERVICE = 'ON SERVICE'
+    DECOMMISSIONED = 'DECOMMISSIONED'
+
+
 class Drone(models.Model):
     model = models.CharField('drone', max_length=20)
     serial_number = models.CharField('serial number', default='0', max_length=15)
     description = models.TextField('description')
     manufacture_date = models.DateField('manufacture date')
-    registration_date = models.DateField('registration date')
-    status = models.TextField('status')
+    registration_date = models.DateField('registration date', auto_now_add=True)
+    status = models.TextField('status', choices=DroneStatusType.choices, default=DroneStatusType.NEW)
     drone_type_id = models.ForeignKey(DroneType, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -48,6 +55,12 @@ class TechOperation(models.Model):
     tech_card_id = models.ForeignKey(TechCard, on_delete=models.CASCADE)
 
 
+class RequestStatusType(models.TextChoices):
+    ACTIVE = 'ACTIVE'
+    DECLINED = 'DECLINED'
+    COMPLETED = 'COMPLETED'
+
+
 class Request(models.Model):
     description = models.TextField('description', default=None)
     attachments = models.URLField('attachments', default='#')
@@ -55,7 +68,7 @@ class Request(models.Model):
     response = models.TextField('response', default=None, null=True)
     response_date = models.DateTimeField('response date', null=True)
     repair_date = models.DateTimeField('repair date', null=True)
-    status = models.TextField('status', null=True)
+    status = models.TextField('status', choices=RequestStatusType.choices, default=RequestStatusType.ACTIVE)
     summary = models.TextField('summary', null=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     drone_id = models.ForeignKey(Drone, on_delete=models.CASCADE)

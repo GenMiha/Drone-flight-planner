@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block content %}
-{{ user.username }}<br>
-{{ user.email }}
+
+Username: {{ user.username }}<br>
+First name: {{ user.first_name }}<br>
+Last name: {{ user.last_name }}<br>
+Email: {{ user.email }}<br>
+
+<a class="waves-effect waves-light btn" href="{% url 'user_edit' %}">edit info</a>
+
 {% endblock %}
